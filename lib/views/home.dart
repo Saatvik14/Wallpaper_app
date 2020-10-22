@@ -51,7 +51,6 @@ class _HomeState extends State<Home> {
             height: 80,
             child: ListView.builder(
               itemCount: categories.length,
-              shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Categorytile(
