@@ -30,8 +30,10 @@ Widget wallapaersList({List<WallpaperModel> wallpapers, context}) {
         children: wallpapers.map((wallpaper) {
           return GridTile(
               child: Container(
+                  child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
             child: Image.network(wallpaper.src.portrait),
-          ));
+          )));
         }).toList(),
       ));
 }

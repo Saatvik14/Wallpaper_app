@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:Wallpaper_App/data/data.dart';
 import 'package:Wallpaper_App/model/wallpapermodel.dart';
+import 'package:Wallpaper_App/views/search.dart';
 import 'package:Wallpaper_App/widget/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:Wallpaper_App/model/category_model.dart';
@@ -15,9 +16,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<categoriemodel> categories = new List();
   List<WallpaperModel> wallpapers = new List();
+  TextEditingController searchController = new TextEditingController();
+
   gettrendingwallpaper() async {
     var response = await http.get("https://api.pexels.com/v1/curated",
-        headers: {"Authorisation": apikey});
+        headers: {"Authorization": apikey});
     //print(response.body.toString());
 
     Map<String, dynamic> jsondata = jsonDecode(response.body);
@@ -58,11 +61,24 @@ class _HomeState extends State<Home> {
               child: Row(children: <Widget>[
                 Expanded(
                   child: TextField(
+                    controller: searchController,
                     decoration: InputDecoration(
                         hintText: "Search", border: InputBorder.none),
                   ),
                 ),
-                Icon(Icons.search),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Search(
+                                  searchQuery: searchController.text,
+                                )));
+                  },
+                  child: Container(
+                    child: Icon(Icons.search),
+                  ),
+                ),
               ]),
             ),
             SizedBox(
