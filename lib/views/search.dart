@@ -19,7 +19,7 @@ class _SearchState extends State<Search> {
 
   getSearchwallpaper(String query) async {
     var response = await http.get(
-        "https//api.pexels.com/v1/search?query=$query&per_page=30",
+        "https://api.pexels.com/v1/search?query=$query&per_page=30",
         headers: {"Authorization": apikey});
     //print(response.body.toString());
 
@@ -37,6 +37,7 @@ class _SearchState extends State<Search> {
   void initState() {
     getSearchwallpaper(widget.searchQuery);
     super.initState();
+    searchController.text = widget.searchQuery;
   }
 
   Widget build(BuildContext context) {
@@ -65,7 +66,9 @@ class _SearchState extends State<Search> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      getSearchwallpaper(searchController.text);
+                    },
                     child: Container(
                       child: Icon(Icons.search),
                     ),

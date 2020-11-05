@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:Wallpaper_App/data/data.dart';
 import 'package:Wallpaper_App/model/wallpapermodel.dart';
+import 'package:Wallpaper_App/views/category.dart';
 import 'package:Wallpaper_App/views/search.dart';
 import 'package:Wallpaper_App/widget/widgets.dart';
 import 'package:flutter/material.dart';
@@ -116,36 +116,42 @@ class Categorytile extends StatelessWidget {
   Categorytile({@required this.imgurl, @required this.t});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 4),
-      child: Stack(
-        children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              imgurl,
-              height: 50,
-              width: 100,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            height: 50,
-            width: 100,
-            alignment: Alignment.center,
-            child: Text(
-              t,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16),
-            ),
-          )
-        ],
-      ),
-    );
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Category(
+                        categoryName: t.toLowerCase(),
+                      )));
+        },
+        child: Container(
+            margin: EdgeInsets.only(right: 4),
+            child: Stack(children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  imgurl,
+                  height: 50,
+                  width: 100,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                height: 50,
+                width: 100,
+                alignment: Alignment.center,
+                child: Text(
+                  t,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16),
+                ),
+              )
+            ])));
   }
 }
