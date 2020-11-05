@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+//import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
@@ -104,9 +104,9 @@ class _ImageViewState extends State<ImageView> {
     await _askPermission();
     var response = await Dio()
         .get(widget.imgurl, options: Options(responseType: ResponseType.bytes));
-    final result =
-        await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
-    print(result);
+    //final result =
+    //await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
+    //print(result);
     Navigator.pop(context);
   }
 

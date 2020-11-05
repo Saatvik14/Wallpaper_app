@@ -24,7 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.2
-  image_gallery_saver: ^1.6.0
   random_string: ^2.1.0
   dio: ^3.0.10
   cached_network_image: ^2.3.3
