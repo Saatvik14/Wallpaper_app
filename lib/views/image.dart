@@ -1,9 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-//import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:image_downloader/image_downloader.dart';
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 
 class ImageView extends StatefulWidget {
   final String imgurl;
@@ -104,17 +106,18 @@ class _ImageViewState extends State<ImageView> {
     await _askPermission();
     var response = await Dio()
         .get(widget.imgurl, options: Options(responseType: ResponseType.bytes));
-    //final result =
-    //await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
-    //print(result);
+    final result =
+        await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
+    print(result);
     Navigator.pop(context);
   }
 
   _askPermission() async {
-    if (Platform.isIOS) {
+    if (Platform.isAndroid) {
       Map<PermissionGroup, PermissionStatus> permissions =
           await PermissionHandler()
               .requestPermissions([PermissionGroup.photos]);
+      print(permissions);
     } else {
       PermissionStatus permission = await PermissionHandler()
           .checkPermissionStatus(PermissionGroup.storage);

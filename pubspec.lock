@@ -123,6 +123,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  gallery_saver:
+    dependency: "direct main"
+    description:
+      name: gallery_saver
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   http:
     dependency: "direct main"
     description:
@@ -137,6 +144,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
+  image_downloader:
+    dependency: "direct main"
+    description:
+      name: image_downloader
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.20.1"
+  image_gallery_saver:
+    dependency: "direct main"
+    description:
+      name: image_gallery_saver
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.6.2"
   intl:
     dependency: transitive
     description:
