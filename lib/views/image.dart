@@ -47,8 +47,11 @@ class _ImageViewState extends State<ImageView> {
                     children: <Widget>[
                       Container(
                         height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Color(0xff1C1B1B).withOpacity(0.8),
+                        ),
                         width: MediaQuery.of(context).size.width / 2,
-                        color: Color(0xff1C1B1B).withOpacity(0.8),
                       ),
                       Container(
                         height: 50,
@@ -84,9 +87,14 @@ class _ImageViewState extends State<ImageView> {
                 SizedBox(
                   height: 16,
                 ),
-                Text(
-                  "Cancel",
-                  style: TextStyle(color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    "Cancel",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(
                   height: 50,

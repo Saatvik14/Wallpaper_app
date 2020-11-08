@@ -21,7 +21,6 @@ class _HomeState extends State<Home> {
   gettrendingwallpaper() async {
     var response = await http.get("https://api.pexels.com/v1/curated",
         headers: {"Authorization": apikey});
-    //print(response.body.toString());
 
     Map<String, dynamic> jsondata = jsonDecode(response.body);
     jsondata["photos"].forEach((element) {
@@ -43,7 +42,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: brand(),
         elevation: 0.0,
@@ -87,7 +85,7 @@ class _HomeState extends State<Home> {
             Container(
               height: 80,
               child: ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 itemCount: categories.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,

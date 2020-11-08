@@ -4,6 +4,7 @@ import 'package:Wallpaper_App/model/wallpapermodel.dart';
 
 Widget brand() {
   return RichText(
+    textAlign: TextAlign.center,
     text: TextSpan(
       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
       children: <TextSpan>[
@@ -16,14 +17,14 @@ Widget brand() {
 
 Widget wallapaersList({List<WallpaperModel> wallpapers, context}) {
   return Container(
-      padding: EdgeInsets.symmetric(horizontal: 60),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: GridView.count(
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),
         crossAxisCount: 2,
         childAspectRatio: 0.6,
-        mainAxisSpacing: 6.0,
-        crossAxisSpacing: 6.0,
+        mainAxisSpacing: 2.0,
+        crossAxisSpacing: 10.0,
         children: wallpapers.map((wallpaper) {
           return GridTile(
               child: GestureDetector(
@@ -40,7 +41,7 @@ Widget wallapaersList({List<WallpaperModel> wallpapers, context}) {
               tag: wallpaper.src.portrait,
               child: Container(
                   child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(20),
                 child: Image.network(wallpaper.src.portrait),
               )),
             ),
